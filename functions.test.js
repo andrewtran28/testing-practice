@@ -1,7 +1,7 @@
 // const capitalize = require ('./functions');
 // const reverseString = require ('./functions');
 
-import { capitalize, reverseString, calculator, caesarCipher } from "./functions";
+import { capitalize, reverseString, calculator, caesar } from "./functions";
 
 test('take string and capitalize first letter of string', () => {
     expect(capitalize("apple")).toBe("Apple");
@@ -22,5 +22,9 @@ test('calculator with add, subtract, multiply, and divide functionality.', () =>
 });
 
 test('takes a string and a shift factor and returns it with each character shifted.', () => {
-    expect(caesarCipher("abcdefghijklmnopqrstuvwxyz0123456789", 2)).toBe("CDEFGHIJKLMNOPQRSTUVWXYZ0123456789AB");
+    expect(caesar.cipher("Hello There!", 3)).toBe("Khoor Wkhuh!");
+    expect(caesar.cipher("y", 28)).toBe("a");
+    expect(caesar.cipher("123", 3)).toBe("456");
+    expect(caesar.cipher("123", 203)).toBe("456");
+    expect(caesar.cipher("Hello, what's 2+2? It's 4!", 3)).toBe("Khoor, zkdw'v 5+5? Lw'v 7!");
 })
