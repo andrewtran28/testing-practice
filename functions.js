@@ -32,6 +32,10 @@ const calculator = (() => {
 
 const caesar = (() => {
     const cipher = (string, key) => {
+        if (typeof string !== "string" || typeof key !== "number"){
+            throw new Error('Invalid string or key!');
+        }
+
         let code = "";
         for (var i = 0; i < string.length; i++) {
             const index = string.charAt(i);
@@ -79,4 +83,32 @@ const caesar = (() => {
     return { cipher };
 })();
 
-export { capitalize, reverseString, calculator, caesar };
+function analyzeArray (array) {
+    let checkArray = array.every((element) => typeof element === 'number');
+
+    if (typeof array !== 'object' || !checkArray) {
+        throw new Error('Input is not an array containing numbers');
+    }
+
+    let analyze = {
+        average: "",
+        min: "",
+        max: "",
+        length: "",
+    }
+
+    let sum = 0;
+
+    for (var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+
+    analyze.average = sum / array.length;
+    analyze.min = Math.min(...array);
+    analyze.max = Math.max(...array);
+    analyze.length = array.length;
+
+    return analyze;
+}
+
+export { capitalize, reverseString, calculator, caesar, analyzeArray };
