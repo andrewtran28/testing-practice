@@ -75,6 +75,9 @@ const caesar = (() => {
         if ((numbers.indexOf(num) + key) > 9) {
             let rollOver = (numbers.indexOf(num) + key) % 10;
             return rollOver;
+        } else if ((numbers.indexOf(num) + key) < 0) {
+            let rollUnder = numbers.length - Math.abs((numbers.indexOf(num) + key) % 10);
+            return rollUnder;
         } else {
             return numbers.indexOf(num) + key;
         }
